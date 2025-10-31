@@ -21,11 +21,11 @@ class Router: ObservableObject {
         path.append(route)
     }
     
-    func replaceLastScreen(with route: Route) {
-        let newPath = NavigationPath(path.removeLast())
-        newPath.append(route)
-        path = newPath
-    }
+//    func replaceLastScreen(with route: Route) {
+//        let newPath = NavigationPath(path.removeLast())
+//        newPath.append(route)
+//        path = newPath
+//    }
     
     func reset() {
         path.removeLast(path.count)
