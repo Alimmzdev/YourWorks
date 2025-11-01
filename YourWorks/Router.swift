@@ -10,24 +10,41 @@ import Combine
 
 enum Route: Hashable {
     case introduction
+    case dashboard
     case home
+    case search
+    case favorites
+    case profile
 }
 
-class Router: ObservableObject {
+@MainActor
+final class Router: ObservableObject {
     @Published var path = NavigationPath()
     @Published var startRoute: Route = .introduction
-    
+
     func navigate(to route: Route) {
         path.append(route)
     }
-    
-//    func replaceLastScreen(with route: Route) {
-//        let newPath = NavigationPath(path.removeLast())
-//        newPath.append(route)
-//        path = newPath
-//    }
-    
+
     func reset() {
-        path.removeLast(path.count)
+        path = NavigationPath()
+    }
+
+    /// Replace only the last item (keep the root)
+    func replaceLast(with route: Route) {
+        if !path.isEmpty { path.removeLast() }
+        path.append(route)
+    }
+
+    /// Clear navigation and set a new root
+    func offAllTo(with route: Route) {
+        startRoute = route
+        path = NavigationPath()
+    }
+    
+    func goBack() {
+        if !path.isEmpty {
+            path.removeLast()
+        }
     }
 }

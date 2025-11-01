@@ -41,7 +41,7 @@ struct IntroductionScreen: View {
                 Spacer().frame(height: 40)
                 
                 Button(action: {
-                    router.navigate(to: .home)
+                    router.offAllTo(with: .dashboard)
                 }) {
                     ZStack {
                         Text("Let’s Start")

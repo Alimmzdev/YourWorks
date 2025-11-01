@@ -13,18 +13,40 @@ struct RootView: View {
     var body: some View {
         NavigationStack(path: $router.path) {
             Group {
-                IntroductionScreen()
-            }
-            .navigationDestination(for: Route.self) { route in
-                switch route {
+                switch router.startRoute {
                 case .introduction:
                     IntroductionScreen()
-                case .home:
-                    HomeScreen()
+                case .dashboard:
+                    DashboardView()
+                case .search:
+                    SearchScreen()
+                default:
+                    IntroductionScreen()
                 }
+            }
+            .navigationDestination(for: Route.self) { route in
+                routeDestination(for: route)
             }
         }
         .environmentObject(router)
+    }
+    
+    @ViewBuilder
+    private func routeDestination(for route: Route) -> some View {
+        switch route {
+        case .introduction:
+            IntroductionScreen()
+        case .dashboard:
+            DashboardView()
+        case .home:
+            HomeScreen()
+        case .search:
+            SearchScreen()
+        case .favorites:
+            FavoritesScreen()
+        case .profile:
+            ProfileScreen()
+        }
     }
 }
 
