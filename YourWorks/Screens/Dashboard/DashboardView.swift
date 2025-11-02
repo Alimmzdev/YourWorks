@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct DashboardView: View {
-    @State private var selection: TabItem = .home
+    @State private var selection: TabItem = .tasks
     
     var body: some View {
         TabView(selection: $selection) {
             TasksScreen()
                 .tabItem {
-                    Label(TabItem.home.title, systemImage: TabItem.home.iconName)
+                    Label(TabItem.tasks.title, systemImage: TabItem.tasks.iconName)
                 }
-                .tag(TabItem.home)
+                .tag(TabItem.tasks)
             
             SearchScreen()
                 .tabItem {

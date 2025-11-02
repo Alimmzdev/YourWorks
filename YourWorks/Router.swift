@@ -11,7 +11,7 @@ import Combine
 enum Route: Hashable {
     case introduction
     case dashboard
-    case home
+    case tasks
     case search
     case favorites
     case profile

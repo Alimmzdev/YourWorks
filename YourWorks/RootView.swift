@@ -38,7 +38,7 @@ struct RootView: View {
             IntroductionScreen()
         case .dashboard:
             DashboardView()
-        case .home:
+        case .tasks:
             TasksScreen()
         case .search:
             SearchScreen()
