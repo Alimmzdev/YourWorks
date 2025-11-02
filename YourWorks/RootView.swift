@@ -39,7 +39,7 @@ struct RootView: View {
         case .dashboard:
             DashboardView()
         case .home:
-            HomeScreen()
+            TasksScreen()
         case .search:
             SearchScreen()
         case .favorites:

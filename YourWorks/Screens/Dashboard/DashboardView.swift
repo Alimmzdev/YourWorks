@@ -12,7 +12,7 @@ struct DashboardView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            HomeScreen()
+            TasksScreen()
                 .tabItem {
                     Label(TabItem.home.title, systemImage: TabItem.home.iconName)
                 }

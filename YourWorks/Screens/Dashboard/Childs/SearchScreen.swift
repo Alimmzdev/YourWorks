@@ -14,5 +14,5 @@ struct SearchScreen: View {
 }
 
 #Preview {
-    HomeScreen()
+    TasksScreen()
 }
