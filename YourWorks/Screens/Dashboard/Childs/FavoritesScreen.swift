@@ -14,5 +14,5 @@ struct FavoritesScreen: View {
 }
 
 #Preview {
-    TasksScreen()
+    TodosScreen()
 }

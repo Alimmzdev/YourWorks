@@ -14,5 +14,5 @@ struct ProfileScreen: View {
 }
 
 #Preview {
-    TasksScreen()
+    TodosScreen()
 }

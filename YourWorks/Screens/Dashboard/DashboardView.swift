@@ -8,41 +8,35 @@
 import SwiftUI
 
 struct DashboardView: View {
-    @State private var selection: TabItem = .tasks
+    @State private var searchText: String = ""
     
     var body: some View {
-        TabView(selection: $selection) {
-            TasksScreen()
-                .tabItem {
-                    Label(TabItem.tasks.title, systemImage: TabItem.tasks.iconName)
-                }
-                .tag(TabItem.tasks)
+        TabView {
+            Tab("Tasks", systemImage: "checkmark.circle") {
+                TodosScreen()
+            }
             
-            SearchScreen()
-                .tabItem {
-                    Label(TabItem.search.title, systemImage: TabItem.search.iconName)
-                }
-                .tag(TabItem.search)
+            // 🟨 Favorites Tab
+            Tab("Favorites", systemImage: "heart") {
+                FavoritesScreen()
+            }
             
-            FavoritesScreen()
-                .tabItem {
-                    Label(TabItem.favorites.title, systemImage: TabItem.favorites.iconName)
-                }
-                .tag(TabItem.favorites)
+            // 🟦 Profile Tab
+            Tab("Profile", systemImage: "person") {
+                ProfileScreen()
+            }
             
-            ProfileScreen()
-                .tabItem {
-                    Label(TabItem.profile.title, systemImage: TabItem.profile.iconName)
+            Tab("Search", systemImage: "magnifyingglass", role: .search) {
+                NavigationStack {
+                    SearchScreen(searchText: $searchText)
                 }
-                .tag(TabItem.profile)
+            }
         }
         .tint(AppColors.primary)
-    
+        .searchable(text: $searchText, placement: .toolbar)
     }
 }
 
-struct DashboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        DashboardView()
-    }
+#Preview {
+    DashboardView()
 }

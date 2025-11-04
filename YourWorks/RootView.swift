@@ -18,8 +18,6 @@ struct RootView: View {
                     IntroductionScreen()
                 case .dashboard:
                     DashboardView()
-                case .search:
-                    SearchScreen()
                 default:
                     IntroductionScreen()
                 }
@@ -34,18 +32,17 @@ struct RootView: View {
     @ViewBuilder
     private func routeDestination(for route: Route) -> some View {
         switch route {
-        case .introduction:
-            IntroductionScreen()
+            
         case .dashboard:
             DashboardView()
         case .tasks:
-            TasksScreen()
-        case .search:
-            SearchScreen()
+            TodosScreen()
         case .favorites:
             FavoritesScreen()
         case .profile:
             ProfileScreen()
+        default:
+            IntroductionScreen()
         }
     }
 }

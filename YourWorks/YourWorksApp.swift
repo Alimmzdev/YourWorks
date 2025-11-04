@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct YourWorksApp: App {
@@ -13,5 +14,6 @@ struct YourWorksApp: App {
         WindowGroup {
             RootView()
         }
+        .modelContainer(for: Todo.self)
     }
 }

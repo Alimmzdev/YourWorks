@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct SearchScreen: View {
+    @Binding var searchText: String
+    
     var body: some View {
-        Text("Search Screen")
+        List {
+            if searchText.isEmpty {
+                Text("Start typing to search…")
+            } else {
+                Text("Results for “\(searchText)”")
+            }
+        }
+        .navigationTitle("Search")
     }
 }
 
 #Preview {
-    TasksScreen()
+    SearchScreen(searchText: .constant(""))
 }

@@ -14,6 +14,10 @@ extension Color {
         let blue = Double((hex & 0xff) >> 0) / 255.0
         self.init(.sRGB, red: red, green: green, blue: blue, opacity: opacity)
     }
+    static let pastelBlue = Color(red: 0.7, green: 0.85, blue: 1.0)
+    static let pastelPink = Color(red: 1.0, green: 0.8, blue: 0.85)
+    static let pastelGreen = Color(red: 0.8, green: 1.0, blue: 0.8)
+    static let pastelYellow = Color(red: 1.0, green: 1.0, blue: 0.7)
 }
 
 struct AppColors {

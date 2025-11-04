@@ -33,12 +33,9 @@ struct AddNewTaskView: View {
                 }
             Spacer()
             Button(action: {
-                // Creating a new task object
-                //                let newTask = Task(title: title, explanation: explanation, dueDate: dueDate)
-                //                context.insert(newTask)
-                
-                // Save the context and dismiss the view
-                do {
+                let newTask = Todo(title: title, explaination: explanation, isCompleted: false, dueDate: dueDate, createdAt: Date(), updatedAt: Date())
+                context.insert(newTask)
+                do{
                     try context.save()
                     dismiss()
                 } catch {

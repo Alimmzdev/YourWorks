@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Task: Identifiable {
+class Todo: Identifiable {
     var id: UUID
     var title: String
     var explaination: String
