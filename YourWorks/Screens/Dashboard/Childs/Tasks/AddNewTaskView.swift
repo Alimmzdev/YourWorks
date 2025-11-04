@@ -8,54 +8,67 @@
 import SwiftUI
 import SwiftData
 
-struct AddNewTaskView: View {
-    
+struct NewTodoSheetView: View {
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var context
     @State private var title: String = ""
     @State private var explanation: String = ""
-    @State private var dueDate: Date = Date()
-    
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var context
     
     var body: some View {
-        VStack(spacing: 16) {
-            Section(header: Text("Task Info")
-                .font(.headline)) {
-                    TextField("Title", text: $title)
-                        .padding()
-                        .glassEffect()
-                    TextField("Explanation", text: $explanation)
-                        .padding()
-                        .glassEffect()
-                    
-                    DatePicker("Due Date", selection: $dueDate, displayedComponents: .date)
-                        .padding()
-                }
-            Spacer()
-            Button(action: {
-                let newTask = Todo(title: title, explaination: explanation, isCompleted: false, dueDate: dueDate, createdAt: Date(), updatedAt: Date())
-                context.insert(newTask)
-                do{
-                    try context.save()
-                    dismiss()
-                } catch {
-                    print("Error saving context: \(error.localizedDescription)")
-                }
-            }) {
-                Text("Add New Task")
+        NavigationStack {
+            VStack(spacing: 20) {
+                TextField("Task Title", text: $title)
                     .padding()
-                    .foregroundStyle(.white)
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(10)
+                    .foregroundColor(.black)
                     .font(.headline)
+                    .textFieldStyle(PlainTextFieldStyle())
+                
+                TextField("Task Title", text: $title)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(10)
+                    .foregroundColor(.black)
+                    .font(.headline)
+                    .textFieldStyle(PlainTextFieldStyle())
+                
+                Button(action: addNewTodo) {
+                    Text("Add")
+                        .padding()
+                        .font(.headline)
+                }
+                .frame(maxWidth: .infinity)
+                .foregroundStyle(.white)
+                .glassEffect(.regular.tint(AppColors.primary))
+                
+                Spacer()
             }
-            .frame(maxWidth: .infinity)
-            .buttonStyle(.plain)
-            .glassEffect(.regular.tint(AppColors.primary).interactive())
             .padding()
+            .navigationTitle("New Task")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "xmark")
+                }
+            }
         }
-        .padding()
+    }
+    
+    private func addNewTodo() {
+        let newTodo = Todo(title: title, explaination: explanation, isCompleted: false,updatedAt: Date())
+        context.insert(newTodo)
+        do {
+            try context.save()
+        } catch {
+            print("error when save new todo ...")
+        }
+        dismiss()
     }
 }
 
 #Preview {
-    AddNewTaskView()
+    NewTodoSheetView()
 }

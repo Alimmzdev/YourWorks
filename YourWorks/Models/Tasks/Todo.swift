@@ -18,7 +18,7 @@ class Todo: Identifiable {
     var createdAt: Date
     var updatedAt: Date
     
-    init(id: UUID = UUID(), title: String, explaination: String, isCompleted: Bool, dueDate: Date? = nil, createdAt: Date, updatedAt: Date) {
+    init(id: UUID = UUID(), title: String, explaination: String, isCompleted: Bool, dueDate: Date? = nil, createdAt: Date = Date(), updatedAt: Date) {
         self.id = id
         self.title = title
         self.explaination = explaination

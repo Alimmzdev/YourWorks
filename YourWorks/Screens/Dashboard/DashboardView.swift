@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DashboardView: View {
     @State private var searchText: String = ""
+    @State private var showAddNewtodo: Bool = false
     
     var body: some View {
         TabView {
@@ -16,24 +17,22 @@ struct DashboardView: View {
                 TodosScreen()
             }
             
-            // 🟨 Favorites Tab
             Tab("Favorites", systemImage: "heart") {
                 FavoritesScreen()
             }
             
-            // 🟦 Profile Tab
             Tab("Profile", systemImage: "person") {
                 ProfileScreen()
             }
             
-            Tab("Search", systemImage: "magnifyingglass", role: .search) {
-                NavigationStack {
-                    SearchScreen(searchText: $searchText)
-                }
+            Tab("Add New Task", systemImage: "plus", role: .search) {
+                NavigationView {}
+                    .sheet(isPresented: $showAddNewtodo) {
+                        NewTodoSheetView()
+                    }
             }
         }
         .tint(AppColors.primary)
-        .searchable(text: $searchText, placement: .toolbar)
     }
 }
 

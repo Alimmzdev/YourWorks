@@ -13,38 +13,62 @@ struct TodosScreen: View {
     @State private var showAddTask: Bool = false
     var body: some View {
         VStack {
-            HStack {
-                Text("Home")
-                    .font(.title)
-                Spacer()
-                Button(action: {}){
-                    Image(systemName: "plus")
+            VStack(alignment: .leading) {
+                HStack(alignment: .center) {
+                    Image(systemName: "checkmark.circle")
+                        .font(.title)
+                        .bold()
+                    Text("Todos")
+                        .font(.title)
+                        .bold()
+                    Spacer()
+                    Text("2 tasks remaining")
+                        .font(.caption)
+                        .padding(.vertical, 12)
+                        .padding(.horizontal)
+                        .background(.white.opacity(0.3))
+                        .cornerRadius(24)
+                    
                 }
-                .glassEffect()
+                Spacer().frame(maxHeight: 8)
+                Text(Date(), style: .date)
             }
+            .padding()
+            .foregroundStyle(.white)
+            .background(AppColors.primary)
             ScrollView(.vertical) {
                 ForEach(todos) { todo in
-                    GlassEffectContainer {
-                        HStack {
-                            Text(todo.title)
-                                .font(.headline)
-                            Spacer()
-                            Button(action: {}){
-                                Image(systemName: "chevron.right")
-                            }
-                            .glassEffect(.regular.tint(AppColors.primary).interactive())
+                    HStack {
+                        Text(todo.title)
+                            .font(.headline)
+                        Spacer()
+                        Button(action: {}){
+                            Image(systemName: "trash")
+                                .padding()
+                                .tint(.white)
                         }
-                        .padding()
+                        .frame(maxWidth: 40, maxHeight: 40.0)
+                        .glassEffect(.regular.tint(Color.red).interactive())
                     }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.white) // Set the background color inside the rounded corners
+                    )
+                    .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color(.secondarySystemBackground), lineWidth: 1) // Border applied outside the rounded corners
+                    )
+                    .padding(.horizontal)
+                    .padding(.vertical , 4.0)
                 }
             }
         }
-        .padding(.horizontal)
     }
 }
 
 
 #Preview(traits: .todosSampleData) {
-    @Previewable @Query(sort: \Todo.title) var todos: [Todo]
-    TodosScreen(todo: todos[0])
+    TodosScreen()
 }
