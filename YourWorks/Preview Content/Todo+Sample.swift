@@ -45,7 +45,7 @@ extension Todo {
             updatedAt: Date()
         ),
         Todo(
-            title: "Plan Weekend Trip",
+            title: "Plan Weekend Trip Test Long Text in Row",
             explaination: "Research and finalize the plans for a weekend getaway to the mountains.",
             isCompleted: false,
             dueDate: Calendar.current.date(byAdding: .month, value: 1, to: Date()), // Due in 1 month

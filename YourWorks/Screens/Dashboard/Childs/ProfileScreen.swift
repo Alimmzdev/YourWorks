@@ -9,10 +9,55 @@ import SwiftUI
 
 struct ProfileScreen: View {
     var body: some View {
-        Text("Profile Screen")
+        VStack {
+            Spacer()
+                .frame(maxHeight: 16)
+            Circle()
+                .fill(AppColors.primary)
+                .frame(width:96, height: 96)
+                .overlay(
+                    Image(systemName: "person")
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                )
+            Spacer()
+                .frame(maxHeight: 8)
+            Text("Alimmzdev")
+                .font(.largeTitle)
+                .bold()
+            Text("Mobile Application Developer")
+                .font(.title2)
+                .foregroundColor(.secondary)
+            List {
+                Section(header: Text("Actions")) {
+                    NavigationLink(destination: Text("Yor Todos History")) {
+                        Text("Yor Todos History")
+                    }
+                    NavigationLink(destination: Text("Deleted Todos")) {
+                        Text("Deleted Todos")
+                    }
+                    NavigationLink(destination: Text("Reamaining Todos")) {
+                        Text("Reamaining Todos")
+                    }
+                }
+                
+                Section(header: Text("App Info")) {
+                    HStack {
+                        Text("Version: ")
+                        Spacer()
+                        Text("1.0.0")
+                    }
+                    HStack {
+                        Text("Developer Github: ")
+                        Spacer()
+                        Text("Alimmzdev")
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    TodosScreen()
+    ProfileScreen()
 }

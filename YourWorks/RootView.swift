@@ -37,8 +37,6 @@ struct RootView: View {
             DashboardView()
         case .tasks:
             TodosScreen()
-        case .favorites:
-            FavoritesScreen()
         case .profile:
             ProfileScreen()
         default:

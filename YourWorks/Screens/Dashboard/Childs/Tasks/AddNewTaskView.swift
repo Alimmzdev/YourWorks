@@ -13,11 +13,12 @@ struct NewTodoSheetView: View {
     @Environment(\.modelContext) var context
     @State private var title: String = ""
     @State private var explanation: String = ""
+    @State private var dueDate: Date = Date()
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
-                TextField("Task Title", text: $title)
+                TextField("Title", text: $title)
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(10)
@@ -25,7 +26,7 @@ struct NewTodoSheetView: View {
                     .font(.headline)
                     .textFieldStyle(PlainTextFieldStyle())
                 
-                TextField("Task Title", text: $title)
+                TextField("Description", text: $explanation)
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(10)
@@ -33,6 +34,13 @@ struct NewTodoSheetView: View {
                     .font(.headline)
                     .textFieldStyle(PlainTextFieldStyle())
                 
+                DatePicker(
+                    "Select due date",
+                    selection: $dueDate,
+                    displayedComponents: [.date]
+                )
+                .padding()
+                Spacer()
                 Button(action: addNewTodo) {
                     Text("Add")
                         .padding()
@@ -41,8 +49,6 @@ struct NewTodoSheetView: View {
                 .frame(maxWidth: .infinity)
                 .foregroundStyle(.white)
                 .glassEffect(.regular.tint(AppColors.primary))
-                
-                Spacer()
             }
             .padding()
             .navigationTitle("New Task")
@@ -58,7 +64,13 @@ struct NewTodoSheetView: View {
     }
     
     private func addNewTodo() {
-        let newTodo = Todo(title: title, explaination: explanation, isCompleted: false,updatedAt: Date())
+        let newTodo = Todo(
+            title: title,
+            explaination: explanation,
+            isCompleted: false,
+            dueDate: dueDate,
+            updatedAt: Date()
+        )
         context.insert(newTodo)
         do {
             try context.save()

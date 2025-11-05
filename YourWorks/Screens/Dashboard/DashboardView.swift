@@ -17,19 +17,8 @@ struct DashboardView: View {
                 TodosScreen()
             }
             
-            Tab("Favorites", systemImage: "heart") {
-                FavoritesScreen()
-            }
-            
             Tab("Profile", systemImage: "person") {
                 ProfileScreen()
-            }
-            
-            Tab("Add New Task", systemImage: "plus", role: .search) {
-                NavigationView {}
-                    .sheet(isPresented: $showAddNewtodo) {
-                        NewTodoSheetView()
-                    }
             }
         }
         .tint(AppColors.primary)
