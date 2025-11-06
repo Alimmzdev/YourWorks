@@ -29,18 +29,6 @@ struct ProfileScreen: View {
                 .font(.title2)
                 .foregroundColor(.secondary)
             List {
-                Section(header: Text("Actions")) {
-                    NavigationLink(destination: Text("Yor Todos History")) {
-                        Text("Yor Todos History")
-                    }
-                    NavigationLink(destination: Text("Deleted Todos")) {
-                        Text("Deleted Todos")
-                    }
-                    NavigationLink(destination: Text("Reamaining Todos")) {
-                        Text("Reamaining Todos")
-                    }
-                }
-                
                 Section(header: Text("App Info")) {
                     HStack {
                         Text("Version: ")

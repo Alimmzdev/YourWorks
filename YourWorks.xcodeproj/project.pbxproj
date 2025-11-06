@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		B54C19DD2EBB46130049482D /* YourWorks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourWorks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA1EA83C2EB4E65400B5FA99 /* YourWorks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourWorks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		B5D3B16B2EBA27BE009DD7ED /* YourWorks */ = {
+		FA1EA83E2EB4E65400B5FA99 /* YourWorks */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = YourWorks;
 			sourceTree = "<group>";
@@ -32,9 +32,17 @@
 		FA1EA8332EB4E65400B5FA99 = {
 			isa = PBXGroup;
 			children = (
-				B5D3B16B2EBA27BE009DD7ED /* YourWorks */,
-				B54C19DD2EBB46130049482D /* YourWorks.app */,
+				FA1EA83E2EB4E65400B5FA99 /* YourWorks */,
+				FA1EA83D2EB4E65400B5FA99 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		FA1EA83D2EB4E65400B5FA99 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA1EA83C2EB4E65400B5FA99 /* YourWorks.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -53,13 +61,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				B5D3B16B2EBA27BE009DD7ED /* YourWorks */,
+				FA1EA83E2EB4E65400B5FA99 /* YourWorks */,
 			);
 			name = YourWorks;
 			packageProductDependencies = (
 			);
 			productName = YourWorks;
-			productReference = B54C19DD2EBB46130049482D /* YourWorks.app */;
+			productReference = FA1EA83C2EB4E65400B5FA99 /* YourWorks.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -87,7 +95,7 @@
 			mainGroup = FA1EA8332EB4E65400B5FA99;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = FA1EA8332EB4E65400B5FA99;
+			productRefGroup = FA1EA83D2EB4E65400B5FA99 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -243,7 +251,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P8P7TAC244;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -275,7 +282,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P8P7TAC244;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
